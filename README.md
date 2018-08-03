@@ -14,14 +14,16 @@ Summary: Extends simulation, distribution, quantile and density functions to uni
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/r-evd-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/r-evd-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/r-evd-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/r-evd-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/r-evd-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/r-evd-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/r-evd-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/r-evd-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/r-evd-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/r-evd-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/r-evd-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/r-evd-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-evd/badges/version.svg)](https://anaconda.org/conda-forge/r-evd)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-evd/badges/downloads.svg)](https://anaconda.org/conda-forge/r-evd)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-r--evd-green.svg)](https://anaconda.org/conda-forge/r-evd) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/r-evd.svg)](https://anaconda.org/conda-forge/r-evd) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/r-evd.svg)](https://anaconda.org/conda-forge/r-evd) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/r-evd.svg)](https://anaconda.org/conda-forge/r-evd) |
 
 Installing r-evd
 ================
@@ -66,6 +68,7 @@ To manage the continuous integration and simplify feedstock maintenance
 Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
 this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
 
+For more information please check the [conda-forge documentation](https://conda-forge.org/docs/).
 
 Terminology
 ===========
