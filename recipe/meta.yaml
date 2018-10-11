@@ -1,4 +1,4 @@
-{% set version = '2.3-2' %}
+{% set version = '2.3-3' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -10,36 +10,39 @@ package:
 source:
   fn: evd_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/evd_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/evd/evd_{{ version }}.tar.gz
-  sha256: be3d52837a4eb145a7ff02dc405893d82dd627ded028e34160035dc117bd0159
+    - {{ cran_mirror }}/src/contrib/evd_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/evd/evd_{{ version }}.tar.gz
+  sha256: 2fc5ef2e0c3a2a9392425ddd45914445497433d90fb80b8c363877baee4559b4
 
 build:
   merge_build_host: True  # [win]
-  number: 1
-  skip: true  # [win32]
-
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
+# Suggests: akima
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
+
   host:
     - r-base
 
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
 
 test:
   commands:
-    - $R -e "library('evd')"  # [not win]
+    - $R -e "library('evd')"           # [not win]
     - "\"%R%\" -e \"library('evd')\""  # [win]
-    - conda inspect linkages -p $PREFIX r-evd  # [not win]
-    - conda inspect objects -p $PREFIX r-evd  # [osx]
 
 about:
   home: https://CRAN.R-project.org/package=evd
@@ -52,4 +55,5 @@ about:
 
 extra:
   recipe-maintainers:
+    - dpryan79
     - daf
