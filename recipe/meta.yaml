@@ -47,6 +47,7 @@ test:
 about:
   home: https://CRAN.R-project.org/package=evd
   license: GPL-3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
   summary: Extends simulation, distribution, quantile and density functions to univariate and
     multivariate parametric extreme value distributions, and provides fitting functions
     which calculate maximum likelihood estimates for univariate and bivariate maxima
@@ -56,5 +57,4 @@ about:
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - dpryan79
     - daf
