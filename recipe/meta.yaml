@@ -1,5 +1,4 @@
 {% set version = "2.3-6.1" %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,7 +7,6 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: evd_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/evd_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/evd/evd_{{ version }}.tar.gz
@@ -21,20 +19,18 @@ build:
     - lib/R/lib/
     - lib/
 
-# Suggests: akima
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
-
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
-
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
@@ -46,10 +42,11 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=evd
-  license: GPL-3
-  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
+  license: GPL-3.0-only
   summary: Extends simulation, distribution, quantile and density functions to univariate and multivariate parametric extreme value distributions, and provides fitting functions which calculate maximum likelihood estimates for univariate and bivariate maxima models, and for univariate and bivariate threshold models.
   license_family: GPL3
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
